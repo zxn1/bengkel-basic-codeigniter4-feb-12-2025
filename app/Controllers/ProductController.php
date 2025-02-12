@@ -85,4 +85,22 @@ class ProductController extends BaseController
             return redirect()->route('/')->with('success', 'Product updated successfully.');
         }
     }
+
+    public function destroy($id)
+    {
+        $productModel = new ProductModel();
+        $product = $productModel->find($id);
+
+        if(!$product)
+        {
+            return redirect()->back()->with('errors', 'Product not found!');
+        }
+
+        if($productModel->delete($id))
+        {
+            return redirect()->route('/')->with('success', 'Product deleted successfully.');
+        } else {
+            return redirect()->back()->with('errors', 'Product failed to be deleted!');
+        }
+    }
 }
