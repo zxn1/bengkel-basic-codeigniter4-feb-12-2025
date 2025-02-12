@@ -42,4 +42,12 @@ class ProductController extends BaseController
             return redirect()->route('/')->with('success', 'Product created successfully.');
         }
     }
+
+    public function show($id)
+    {
+        $productModel = new ProductModel();
+        $product = $productModel->find($id);
+
+        return view('product/show', ['product' => $product]);
+    }
 }

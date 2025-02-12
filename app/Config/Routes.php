@@ -13,3 +13,4 @@ use App\Controllers\ProductController;
 $routes->get('/', [ProductController::class, 'index']);
 $routes->get('/create', [ProductController::class, 'create']);
 $routes->post('/store', [ProductController::class, 'store']);
+$routes->get('/show/(:any)', [ProductController::class, 'show/$1']);
