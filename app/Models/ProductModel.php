@@ -9,7 +9,7 @@ class ProductModel extends Model
     protected $table            = 'products';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
-    protected $returnType       = 'array'; //boleh tukar return sebagai array atau object
+    protected $returnType       = 'object'; //boleh tukar return sebagai array atau object
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
