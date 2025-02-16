@@ -9,6 +9,10 @@ use App\Models\ProductModel;
 
 class ProductController extends BaseController
 {
+    // concept. How to access data (based on your model - what you defined/declare):
+    // dd($result[0]['name']); //<-- return type dekat model = array
+    // dd($result[0]->name); //<-- return type dekat model = object
+
     public function index()
     {
         $productModel = new ProductModel();
@@ -24,6 +28,7 @@ class ProductController extends BaseController
 
     public function store()
     {
+        // validate your request input.
         $rules = [
             'name' => 'required|min_length[3]|max_length[255]',
             'price' => 'required|numeric'
@@ -34,6 +39,7 @@ class ProductController extends BaseController
             //return json_encode(['status' => 'fail', 'message' => $this->validator->getErrors()]);
             return redirect()->back()->with('errors', $this->validator->getErrors());
         }
+        // end validate
 
         $productModel = new ProductModel();
         
@@ -102,5 +108,10 @@ class ProductController extends BaseController
         } else {
             return redirect()->back()->with('errors', 'Product failed to be deleted!');
         }
+    }
+
+    public function playing_with_params($id_one, $id_two)
+    {
+        return $id_one . " " . $id_two;
     }
 }
